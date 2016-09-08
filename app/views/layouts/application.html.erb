@@ -4,11 +4,24 @@
     <title>MemoryGame</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <div class="nav-wrapper">
+        <%= link_to 'Memory!', root_path %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li> <%= link_to 'Uploaded Photos', matches_path %> </li>
+          <li> <%= link_to 'New Game', root_path %> </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

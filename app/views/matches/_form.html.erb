@@ -1,0 +1,23 @@
+<%= form_for @match do |f| %>
+
+
+	<%= f.label :pair_name, 'Name Your Match' %>
+	<%= f.text_field :pair_name, placeholder: 'person, place or thing' %>
+
+	<div class='row'>
+		<div class=' col s12 m6'>
+			<%= f.label :pic1, 'Upload Picture 1', class: 'btn-large' %>
+			<span style='display:none'> <%= f.file_field :pic1 %> </span>
+		</div>
+
+		<div class='col s12 m6'>
+			<%= f.label :pic2, 'Upload Picture 2', class: 'btn-large' %>
+			<span style='display:none'> <%= f.file_field :pic2 %>
+		</div>
+
+		<div class='col s12' id='submit-button'>
+			<%= f.submit class: 'btn-large col s12' %>
+		</div>
+	</div>
+
+<% end %>
