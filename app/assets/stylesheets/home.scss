@@ -1,9 +1,15 @@
-.card {
+.card-holder {
 	height: 200px;
 	cursor: pointer;
-	border: solid 5px white;
+	border: solid 5px black;
+	overflow: hidden;
 }
 
-.black-bg {
-	background-color: black;
+.card {
+	height: 90%;
+	cursor: pointer;
+}
+
+.no-display {
+	display: none;
 }
