@@ -4,13 +4,12 @@ $(document).ready(function() {
 	var pairCounter = 0
 	var neededPairs = totalCards / 2
 	var noMoreCards = false
-	var clickers = $('card-holder')
 
 
-	$('.card').on('click', function(e) {
+	$('.card').on('click', function() {
 		console.log('card is clicked')
-		$card = $(this)
-		console.log($(this))
+		$card = $(this.firstElementChild)
+		console.log($(this.firstElementChild))
 		checkForCards($card)
 	});
 
@@ -25,10 +24,11 @@ $(document).ready(function() {
 
 	function selectCard(validChoice) {
 		console.log('selectCard')
-		validChoice.slide_toggle('normal', function(){
+		console.log(validChoice)
+		validChoice.slideToggle('normal', function(){
 			validChoice.toggleClass('no-display');
 		})
-		clickedCards.push('validChoice');
+		clickedCards.push(validChoice);
 		if(clickedCards.length === 2) {
 			evaluateChoices(clickedCards);
 		}
@@ -36,7 +36,10 @@ $(document).ready(function() {
 
 	function evaluateChoices(choices) {
 		console.log('evaluateChoices')
-		if(choices[0] === choices[1]) {
+		console.log(choices)
+		console.log(choices[0])
+		console.log(choices[1])
+		if(choices[0].innerText === choices[1].innerText) {
 			winner;
 		} else { 
 			loser;
