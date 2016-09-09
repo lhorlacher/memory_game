@@ -1,6 +1,9 @@
 /*
  */
 
+@import "materialize/components/color";
+$primary-color: color("light-green", "darken-4") !default;
+
 @import 'materialize';
 @import 'home';
 @import 'matches';
