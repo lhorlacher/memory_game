@@ -4,42 +4,35 @@ $(document).ready(function() {
 	var pairCounter = 0
 	var neededPairs = totalCards / 2
 	var noMoreCards = false
+	var replay = $('#replay_same_deck')
+	var deck = $('.card')
 
 
-	$('.card').on('click', function() {
-		didILose()
-		console.log('card is clicked')
-		$card = $(this.firstElementChild)
-		console.log($(this.firstElementChild))
-		checkForCards($card)
+	deck.on('click', function() {
+		didILose();
+		$card = $(this.firstElementChild);
+		console.log($(this.firstElementChild));
+		checkForCards($card);
 	});
 
 	function validateChoice(cardChoice) {
-		console.log('validateChoice')
+		console.log('validateChoice');
 		if(cardChoice.hasClass('no-display')) {
-			selectCard(cardChoice)
+			selectCard(cardChoice);
 		} else {
 			alert('That card is already chosen. Choose another.');
 		}
 	}
 
 	function selectCard(validChoice) {
-		console.log('selectCard')
-		console.log(validChoice)
 		validChoice.toggleClass('no-display');
-		console.log(validChoice);
 		clickedCards.push(validChoice);
-		console.log(clickedCards.length)
 		if(clickedCards.length === 2) {
 			evaluateChoices(clickedCards);
 		}
 	}
 
 	function evaluateChoices(choices) {
-		console.log('evaluateChoices')
-		console.log(choices)
-		console.log(choices[0])
-		console.log(choices[1])
 		if(choices[0].attr('title') === choices[1].attr('title')) {
 			winner();
 		} else { 
@@ -48,11 +41,10 @@ $(document).ready(function() {
 	}
 
 	function winner() {
-		console.log('winner')
 		pairCounter += 1
 		if(pairCounter === neededPairs) {
-			alert('You have won!!');
-			noMoreCards = true
+			noMoreCards = true;
+			replay.slideDown();
 
 		}
 		clickedCards =[]
@@ -63,13 +55,11 @@ $(document).ready(function() {
 		if(noMoreCards === true) {
 			alert('You need to start a new game!');
 		} else {
-			validateChoice(card)
+			validateChoice(card);
 		}
 	}
 
 	function loser() {
-		console.log('loser')
-		alert('No match!');
 	}
 
 	function didILose() {
@@ -79,6 +69,14 @@ $(document).ready(function() {
 			clickedCards =[]
 		}
 	}
+
+	replay.click(function() {
+		imagesArray = deck.context.images;
+		console.log(imagesArray);
+		for(var i = 0; i < imagesArray.length; i++){
+		$(imagesArray[i]).addClass('no-display');
+		}
+	})
 
 
 
