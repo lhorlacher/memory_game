@@ -7,6 +7,7 @@ $(document).ready(function() {
 
 
 	$('.card').on('click', function() {
+		didILose()
 		console.log('card is clicked')
 		$card = $(this.firstElementChild)
 		console.log($(this.firstElementChild))
@@ -25,10 +26,10 @@ $(document).ready(function() {
 	function selectCard(validChoice) {
 		console.log('selectCard')
 		console.log(validChoice)
-		validChoice.slideToggle('normal', function(){
-			validChoice.toggleClass('no-display');
-		})
+		validChoice.toggleClass('no-display');
+		console.log(validChoice);
 		clickedCards.push(validChoice);
+		console.log(clickedCards.length)
 		if(clickedCards.length === 2) {
 			evaluateChoices(clickedCards);
 		}
@@ -39,10 +40,10 @@ $(document).ready(function() {
 		console.log(choices)
 		console.log(choices[0])
 		console.log(choices[1])
-		if(choices[0].innerText === choices[1].innerText) {
-			winner;
+		if(choices[0].attr('title') === choices[1].attr('title')) {
+			winner();
 		} else { 
-			loser;
+			loser();
 		}
 	}
 
@@ -54,6 +55,7 @@ $(document).ready(function() {
 			noMoreCards = true
 
 		}
+		clickedCards =[]
 	}
 
 	function checkForCards(card) {
@@ -67,16 +69,16 @@ $(document).ready(function() {
 
 	function loser() {
 		console.log('loser')
-		alert('No match! Study your cards then press enter to continue.');
-		clickedCards[0].slide_toggle('normal', function(){
-			validChoice.toggleClass('no-display');
-		})
-		clickedCards[1].slide_toggle('normal', function(){
-			validChoice.toggleClass('no-display');
-		})
+		alert('No match!');
 	}
 
-
+	function didILose() {
+		if(clickedCards.length === 2) {
+			clickedCards[0].toggleClass('no-display');
+			clickedCards[1].toggleClass('no-display');
+			clickedCards =[]
+		}
+	}
 
 
 

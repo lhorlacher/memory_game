@@ -1,9 +1,9 @@
 <h1>Memory Game</h1>
 
 <div class='row'>
-<% @numbers.each do |num| %>
-	<div class='col s3 card' id=<%= num %> >
-	<div class='no-display'><%= num %></div>
+<% @cards.each do |card| %>
+	<div class='col s3 card' id=<%= card %> >
+	<%= image_tag(card[card.keys[0]].url(:standard), title: card.keys[0], class: 'no-display') %>
 	</div> 
 <% end %>
 </div>		
